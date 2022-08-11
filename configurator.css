@@ -1,0 +1,565 @@
+.config_modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Black w/ opacity */
+}
+
+html {
+    /* Make iOS not resize on device rotation */
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    /* NOTE
+      html is set to 62.5% so that all the REM measurements throughout Skeleton
+      are based on 10px sizing. So basically 1.5rem = 15px  
+      
+      Change this if you want to base your REM measuements on something other 
+      than 10px as the base
+      */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.page_header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+
+/* Style Cart button */
+
+.btn {
+    background-color: #F5715A;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+}
+
+
+/* Darker background on mouse-over */
+
+.btn:hover {
+    background-color: #FE9901;
+}
+
+.modal_header {
+    margin: 20px;
+}
+
+.modal_body {
+    margin: 20px;
+}
+
+
+/*Typical Device Breakpoints: https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+
+
+/* Larger than mobile devices (768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .modal_container {
+        background-color: #fefefe;
+        margin: auto;
+        margin-top: 20px;
+        max-height: calc(100vh - 50px);
+        max-width: 425px;
+        min-width: 425px;
+        border-radius: 8px;
+        box-shadow: 0 0 24px 8px rgb(0 0 0 / 30%);
+        position: relative;
+    }
+    .modal_footer {
+        justify-content: space-evenly;
+        position: sticky;
+        border-radius: 8px;
+    }
+    .close {
+        position: absolute;
+    }
+    .modal_container_scroll {
+        max-height: inherit;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+
+/* Mobile devices (768px and down) */
+
+@media only screen and (max-width: 768px) {
+    .modal_container {
+        background-color: #fefefe;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .modal_content {
+        padding-bottom: 140px;
+    }
+    .modal_footer {
+        justify-content: center;
+        position: fixed;
+        border-radius: 0px;
+        margin-right: 15px;
+    }
+    .close {
+        position: fixed;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card_row {
+        flex-wrap: wrap;
+    }
+}
+
+.modal_footer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #ffffff;
+}
+
+.close {
+    color: rgb(255, 255, 255);
+    width: 48px;
+    height: 48px;
+    font-size: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+    right: 25px;
+    top: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.title_container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.calorie_count {
+    font-size: 1.6rem;
+    color: rgb(79, 79, 79);
+}
+
+.description {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.checkout_btn,
+.add_to_cart {
+    color: #ffffff;
+    font-size: 1.75rem;
+    background-color: #F5715A;
+    padding: 10px;
+    padding-top: 12px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 5%;
+    flex-grow: 2;
+    text-align: center;
+}
+
+.add_to_cart:hover {
+    background-color: #FE9901;
+}
+
+
+/* Button Styling */
+
+.topping_inc_btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background-color: #F5715A;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.topping_dec_btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background-color: #F5715A;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.drink_quantity_control {
+    font-size: 1.75rem;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid #4A4A4A 0.25rem;
+    color: black;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+#quantity_increment_btn,
+#quantity_decrement_btn {
+    border: none;
+    border-radius: 5px;
+    color: #4A4A4A;
+    background-color: #ffffff;
+    /*
+    color: #ffffff;
+    background-color: #FE9901;
+    */
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+
+/*Selection Option Headers*/
+
+div.selector_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #FFF8DF;
+    padding: 10px;
+}
+
+div.selector_title {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+div.selector_condition {
+    font-size: 1.5rem;
+    text-align: right;
+    font-weight: 500;
+    color: #F5715A;
+}
+
+
+/*Topping Selection Styling*/
+
+.topping_select {
+    /*overall topping container: checkbox, label, quantity control*/
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.extra_cost {
+    font-size: 1.2rem;
+    color: rgb(79, 79, 79);
+    margin-left: 8px;
+}
+
+.topping_quantity {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.quantity_control {
+    /*-0+ inc/dec system container*/
+    display: flex;
+}
+
+input[type="checkbox"].topping_selector {
+    background-color: aliceblue;
+}
+
+input:checked+label {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.modal_img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.check_label,
+.size_select {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sugar_select {
+    margin: 10px;
+}
+
+.ice_select {
+    margin: 10px;
+}
+
+input {
+    accent-color: #8a9e0a;
+}
+
+textarea {
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1.5px solid rgb(186, 186, 186);
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 16px;
+    resize: none;
+}
+
+label {
+    padding-left: 6px;
+}
+
+i.fa.fa-question-circle {
+    margin-left: 5px;
+    font-size: 20px;
+    color: #F5715A;
+}
+
+i.fa.fa-shopping-cart {
+    margin-right: 5px;
+}
+
+.cart_page {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.btn {
+    display: flex;
+}
+
+
+/*card styling*/
+
+.card_row {
+    display: flex;
+    margin: 10px;
+}
+
+.card {
+    background-color: #fefefe;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid rgb(186, 186, 186) 0.15rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 50%
+}
+
+.card-img-top {
+    width: 100px;
+    height: 100px;
+}
+
+.accordion {
+    cursor: pointer;
+    background-color: #FFF8DF;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #FFF8DF;
+}
+
+.panel {
+    display: none;
+    background-color: #FFF8DF;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.card-body {
+    margin-left: 20px;
+}
+
+.card_title {
+    font-size: 2rem;
+}
+
+.card_text {
+    font-size: 1.4rem;
+}
+
+.card_calorie {
+    font-size: 1.6rem;
+    color: #646464;
+}
+
+.card_price {
+    margin-top: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.checkout_body {
+    margin: 30px;
+    display: flex;
+}
+
+.checkout_price {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.checkout_name,
+.checkout_quantity {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.checkout_price {
+    margin-left: 30px;
+}
+
+.checkout_footer {
+    justify-content: center;
+    position: fixed;
+    border-radius: 0px;
+    margin-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #ffffff;
+    width: 50%;
+}
+
+.checkout_card {
+    width: 30%;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkout_edit {
+    border: none;
+    background-color: transparent;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.checkout_delete {
+    margin-left: 20px;
+    color: #2756c4;
+    border: none;
+    background-color: transparent;
+    font-size: 1.7rem;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.checkout_subtotal {
+    margin: 30px;
+    display: flex;
+}
+
+.subtotal_label {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.subtotal_price {
+    font-size: 1.8rem;
+    font-weight: 400;
+    width: 20%;
+    text-align: right;
+}
+
+hr {
+    width: 95%;
+    margin: 60px auto;
+}

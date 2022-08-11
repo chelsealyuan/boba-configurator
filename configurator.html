@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurator Project</title>
+
+    <link rel="stylesheet" href="configurator.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <!-- Main Page -->
+    <div class="page_header">
+        <h1>Sunshine Tea</h1>
+        <button id="cart_btn" class="btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <div id="cart_num"> Cart (0)</div> </button>
+    </div>
+
+    <div class="card_row">
+        <div class="card" id="milktea_card">
+            <img class="card-img-top" src="https://img.tapmango.com/mo/430c1ae3-1958-47f0-af72-1b9455383afd/250xAUTO/770c9fc6-8d1c-406f-b5a1-5aed38d9829e.png" alt="Classic Milk Tea">
+            <div class="card-body">
+                <div class="card_title">Classic Milk Tea</div>
+                <div class="card_text">Traditional black tea blend with smooth, fresh cream</div>
+                <div class="card_calorie">360 - 670 kcal</div>
+                <div class="card_price">$4.50</div>
+            </div>
+        </div>
+        <div class="card" id="milktea_card">
+            <img class="card-img-top" src="https://img.tapmango.com/mo/430c1ae3-1958-47f0-af72-1b9455383afd/250xAUTO/526a9912-b36e-4b37-95a3-b2bf044a56cd.png" alt="Guava Sunset">
+            <div class="card-body">
+                <div class="card_title">Guava Sunset</div>
+                <div class="card_text">Freshly blended guava and pineapple marmalade with a splash of lemon juice</div>
+                <div class="card_calorie">280 - 590 kcal</div>
+                <div class="card_price">$4.25</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Mock Cart Page-->
+    <div class="cart_page" id="cart_page">
+        <h1>Cart</h1>
+        <button id="close_cart" class="close">&times;</button>
+
+        <div class="checkout_body">
+            <div class="checkout_quantity">1</div>
+            <div class="checkout_card">
+                <div class="checkout_details">
+                    <div class="checkout_name">Classic Milk Tea</div>
+                    <div class="checkout_size">Small</div>
+                    <div class="checkout_toppings">
+                        Boba ($0.70)
+                    </div>
+                    <div class="checkout_sugar">Normal Sugar 100%</div>
+                    <div class="checkout_ice">Regular Ice</div>
+
+                    <button class="checkout_edit">Edit</button>
+                    <button class="checkout_delete">Remove</button>
+                </div>
+                <div class="checkout_price">$5.20</div>
+            </div>
+
+            <div class="break"></div>
+        </div>
+
+        <hr></hr>
+        <div class="checkout_subtotal">
+            <div class="subtotal_label">Subtotal</div>
+            <div class="subtotal_price"> $5.20</div>
+        </div>
+
+        <div class="checkout_footer">
+            <button id="checkout_btn" class="checkout_btn">Checkout</button>
+        </div>
+
+
+    </div>
+
+    <!--Pop-up Modal-->
+    <div class="config_modal" id="config_modal">
+        <div class="modal_container">
+            <button id="close_modal" class="close">&times;</button>
+            <div class="modal_container_scroll">
+                <div class="modal_content">
+                    <div class="modal_header">
+                        <img class="modal_img" src="https://img.tapmango.com/mo/430c1ae3-1958-47f0-af72-1b9455383afd/250xAUTO/770c9fc6-8d1c-406f-b5a1-5aed38d9829e.png" alt="Glass of House Milk Tea">
+                        <div class='title_container'>
+                            <div class="title">Classic Milk Tea</div>
+                            <div class="calorie_count">360 - 670 kcal</div>
+                        </div>
+                        <div class="description">Traditional black tea blend with smooth, dairy-free cream </div>
+                    </div>
+
+                    <div class="modal_body">
+                        <div class="size_selector">
+                            <div class="selector_header">
+                                <div class="selector_title">Size</div>
+                                <div class="selector_condition">Required</div>
+                            </div>
+                            <div class="size_select">
+                                <input type="radio" id="small_size" name="size" value="small" required>
+                                <label for="small_size">Small</label>
+                            </div>
+                            <div class="size_select">
+                                <input type="radio" id="large_size" name="size" value="large">
+                                <label for="large_size">Large</label>
+                                <div class="extra_cost">+$2.50</div>
+                            </div>
+                        </div>
+
+                        <div class="topping_selector">
+                            <div class="selector_header">
+                                <div class="selector_title">Toppings <button class="accordion"><i class="fa fa-question-circle" id="topping_question" aria-hidden="true"></i></button></div>
+                                <div class="selector_condition">Optional (Max 3)</div>
+
+                                <div class="break"></div>
+                                <div id="panel" class="panel">
+                                    <div>Click <a href="#">here</a> to learn more about our toppings!</div>
+                                </div>
+                            </div>
+
+                            <div id=boba_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="boba" name="topping" value="boba">
+                                    <label for="boba"> Boba</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=goldenboba_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="goldenboba" name="topping" value="goldenboba">
+                                    <label for="goldenboba"> Golden Boba</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=lycheejelly_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="lycheejelly" name="topping" value="lycheejelly">
+                                    <label for="lycheejelly"> Lychee Jelly</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=grassjelly_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="grassjelly" name="topping" value="grassjelly">
+                                    <label for="grassjelly"> Grass Jelly</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=eggpudding_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="eggpudding" name="topping" value="eggpudding">
+                                    <label for="eggpudding"> Egg Pudding</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=aloevera_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="aloevera" name="topping" value="aloevera">
+                                    <label for="aloevera"> Aloe Vera</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=redbean_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="redbean" name="topping" value="redbean">
+                                    <label for="redbean"> Sweet Red Bean</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=lycheepopping_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="lycheepopping" name="topping" value="lycheepopping">
+                                    <label for="lycheepopping"> Lychee Popping Boba</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=strawberrypopping_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="strawberrypopping" name="topping" value="strawberrypopping">
+                                    <label for="strawberrypopping"> Strawberry Popping Boba</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+
+                            <div id=sago_selector class="topping_select">
+                                <div class="check_label">
+                                    <input type="checkbox" id="sago" name="topping" value="sago">
+                                    <label for="sago"> Sago</label>
+                                    <div class="extra_cost">+$0.70</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="sugar_selector">
+                            <div class="selector_header">
+                                <div class="selector_title">Sugar Level</div>
+                                <div class="selector_condition">Required</div>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="extra_sugar" name="sugar_level" value="extra_sugar">
+                                <label for="extra_sugar">Extra Sugar 120%</label>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="normal_sugar" name="sugar_level" value="normal_sugar">
+                                <label for="normal_sugar">Normal Sugar 100% (Recommended)</label>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="less_sugar" name="sugar_level" value="less_sugar">
+                                <label for="less_sugar">Less Sugar 75%</label>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="half_sugar" name="sugar_level" value="half_sugar">
+                                <label for="half_sugar">Half Sugar 50%</label>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="little_sugar" name="sugar_level" value="little_sugar">
+                                <label for="little_sugar">Little Sugar 25%</label>
+                            </div>
+                            <div class="sugar_select">
+                                <input type="radio" id="no_sugar" name="sugar_level" value="no_sugar">
+                                <label for="no_sugar">No Sugar 0%</label>
+                            </div>
+                        </div>
+
+                        <div class="ice_selector">
+                            <div class="selector_header">
+                                <div class="selector_title">Ice Level</div>
+                                <div class="selector_condition">Required</div>
+                            </div>
+                            <div class="ice_select">
+                                <input type="radio" id="regularice" name="ice_level" value="regularice">
+                                <label for="regularice">Regular Ice</label>
+                            </div>
+                            <div class="ice_select">
+                                <input type="radio" id="lessice" name="ice_level" value="lessice">
+                                <label for="lessice">Less Ice</label>
+                            </div>
+                            <div class="ice_select">
+                                <input type="radio" id="noice" name="ice_level" value="noice">
+                                <label for="noice">No Ice</label>
+                            </div>
+                            <div class="ice_select">
+                                <input type="radio" id="hot" name="ice_level" value="hot">
+                                <label for="hot">Hot</label><br>
+                            </div>
+                        </div>
+
+                        <div class="special_istructions">
+                            <div class="selector_header">
+                                <div class="selector_title">Special Instructions</div>
+                                <div class="selector_condition">Optional</div>
+                            </div>
+                            <textarea id="special_instructions_box" name="paragraph_text" cols="45" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal_footer" id="modal_footer">
+                        <div class="drink_quantity_control" id="drink_quantity_control">
+                            <button id="quantity_decrement_btn">&minus;</button>
+                            <div id="quantity_display">1</div>
+                            <button id="quantity_increment_btn">&plus;</button>
+                        </div>
+
+                        <div class="add_to_cart" id="add_to_cart"></div>
+                        <div id="err_msg"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="configurator.js"></script>
+
+</body>
+
+</html>
